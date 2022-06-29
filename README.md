@@ -1,9 +1,12 @@
 # forexco-interview
 
-## Stack
--React.js
--Node.js
--Express
+### Stack
+
+- ReactJS
+- SASS(SCSS)
+- Node.js
+- Express
+
 
 ![Screenshot from 2022-06-29 22-22-26](https://user-images.githubusercontent.com/63575553/176435240-e2231cb3-8808-4ae1-9daf-a41318319181.png)
 ![Screenshot from 2022-06-29 22-23-10](https://user-images.githubusercontent.com/63575553/176435324-9cac49bc-2570-4aff-96d6-a823b19bd4d5.png)
