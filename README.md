@@ -9,6 +9,7 @@
 
 ### How to run this app
 App contains two folders, client and server. For each folder you need to run npm install. SQL file was exported from MySql workbench and it's included in the server folder.
+I have also included .env file that contains JWT secret.
 
 ![Screenshot from 2022-06-29 22-22-26](https://user-images.githubusercontent.com/63575553/176435240-e2231cb3-8808-4ae1-9daf-a41318319181.png)
 ![Screenshot from 2022-06-29 22-23-10](https://user-images.githubusercontent.com/63575553/176435324-9cac49bc-2570-4aff-96d6-a823b19bd4d5.png)
