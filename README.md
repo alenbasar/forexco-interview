@@ -17,6 +17,8 @@ App contains two folders, client and server. For each folder you need to run npm
 ![Screenshot from 2022-06-29 22-24-42](https://user-images.githubusercontent.com/63575553/176435655-369c1bbb-118a-49b6-b3e6-51df1be78cf2.png)
 ![Screenshot from 2022-06-29 22-25-28](https://user-images.githubusercontent.com/63575553/176435764-92c5b424-14a4-4491-9fb3-ddcb48a0f995.png)
 ![image](https://user-images.githubusercontent.com/63575553/176435884-1b334bcc-58c3-4c78-bb88-52ddf07534eb.png)
+![image](https://user-images.githubusercontent.com/63575553/176444728-8df5891c-a496-49d1-a7a9-6ce04f77a83c.png)
+![image](https://user-images.githubusercontent.com/63575553/176444797-a4847978-0d2d-453d-bf2f-9cf850dc4b9e.png)
 ![image](https://user-images.githubusercontent.com/63575553/176438993-8f2638c9-139e-4e9f-9541-3ba09ec80485.png)
 ![image](https://user-images.githubusercontent.com/63575553/176438867-180126e0-da14-420c-9894-336dfe0b1400.png)
 
