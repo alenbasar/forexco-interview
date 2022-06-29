@@ -8,11 +8,12 @@
 - Express
 
 ### How to run this app
+
 App contains two folders, client and server. For each folder you need to run npm install. SQL file was exported from MySql workbench and it's included in the server folder.
-I have also included .env file that contains JWT secret.
+I have also included .env file that contains JWT configuration for your convenience (it is not a good practice to include secrets in version control).
 
 1. Navigate to client folder and run npm start
-2. Navigate to server folder and run node index.ts
+2. Navigate to server folder and run npm start
 
 ![Screenshot from 2022-06-29 22-22-26](https://user-images.githubusercontent.com/63575553/176435240-e2231cb3-8808-4ae1-9daf-a41318319181.png)
 ![Screenshot from 2022-06-29 22-23-10](https://user-images.githubusercontent.com/63575553/176435324-9cac49bc-2570-4aff-96d6-a823b19bd4d5.png)
@@ -25,6 +26,3 @@ I have also included .env file that contains JWT secret.
 ![image](https://user-images.githubusercontent.com/63575553/176444797-a4847978-0d2d-453d-bf2f-9cf850dc4b9e.png)
 ![image](https://user-images.githubusercontent.com/63575553/176438993-8f2638c9-139e-4e9f-9541-3ba09ec80485.png)
 ![image](https://user-images.githubusercontent.com/63575553/176438867-180126e0-da14-420c-9894-336dfe0b1400.png)
-
-
-

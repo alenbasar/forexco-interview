@@ -1,5 +1,5 @@
 import { useLocation } from "react-router-dom";
-import { useState, useEffect, ReactNode } from "react";
+import { useState, useEffect } from "react";
 import { Helmet } from "react-helmet";
 import Stack from "@mui/material/Stack";
 import Button, { ButtonProps } from "@mui/material/Button";
@@ -8,16 +8,15 @@ import axios from "axios";
 import converterIcon from "../assets/converter-icon.png";
 import swapIcon from "../assets/converter-swap-icon.png";
 import loader from "../assets/loader.svg";
-import { useNavigate } from "react-router-dom";
 
-interface stateTypes {
+type Conversion = {
   symbols: string[];
   from: string;
   to: string;
   amount: number | null | any;
   result: string;
   rate: number | null;
-}
+};
 
 // MUI Button Styles
 const ColorButton = styled(Button)<ButtonProps>(({ theme }) => ({
@@ -32,14 +31,12 @@ const ColorButton = styled(Button)<ButtonProps>(({ theme }) => ({
   textTransform: "none",
 }));
 
-const Convert = ({ token }: any) => {
-  const navigate = useNavigate();
-
+const Convert = () => {
   const [fetchError, setFetchError] = useState(false);
   const [refresh, setRefresh] = useState(false);
   const [loading, setLoading] = useState(true);
   const [showRate, setShowRate] = useState(false);
-  const [selection, setSelection] = useState<stateTypes>({
+  const [selection, setSelection] = useState<Conversion>({
     symbols: [],
     from: "AUD",
     amount: 1,
@@ -53,26 +50,26 @@ const Convert = ({ token }: any) => {
     setLoading(true);
     try {
       const getResult = async () => {
-        await axios
-          .get(
-            `https://api.exchangerate.host/convert?from=${from}&to=${to}&amount=${amount}`
-          )
-          .then((res) => {
-            if (res.data) {
-              const rate = res.data.info.rate.toPrecision();
-              const result = res.data.result.toFixed(3);
+        const { data } = await axios.get(
+          `https://api.exchangerate.host/convert?from=${from}&to=${to}&amount=${amount}`
+        );
+        if (!data) {
+          return;
+        }
+        if (data) {
+          const rate = data.info.rate.toPrecision();
+          const result = data.result.toFixed(3);
 
-              setSelection({
-                ...selection,
-                result: result,
-                rate,
-              });
-              showRateHandler();
-              setTimeout(() => setLoading(false), 550);
-            } else {
-              setFetchError(true);
-            }
+          setSelection({
+            ...selection,
+            result: result,
+            rate,
           });
+          showRateHandler();
+          setTimeout(() => setLoading(false), 550);
+        } else {
+          setFetchError(true);
+        }
       };
       getResult();
     } catch (error) {

@@ -1,22 +1,36 @@
-const express = require("express");
-const mysql = require("mysql");
-const app = express();
-const cors = require("cors");
-const jwt = require("jsonwebtoken");
-const bcrypt = require("bcrypt");
 require("dotenv/config");
+
+import express, { Request, Response } from "express";
+import mysql from "mysql";
+import cors from "cors";
+import jwt from "jsonwebtoken";
+import bcrypt from "bcrypt";
+
+const app = express();
 
 app.use(express.json());
 app.use(cors());
 
-const verifyJWT = (req, res) => {
-  const token = req.headers["x-auth-token"];
+const { JWT_SECRET, DB_HOST, DB_USER, DB_PASSWORD } = process.env;
+if (!JWT_SECRET) {
+  throw new Error("JWT secret missing");
+}
+if (!DB_HOST || !DB_USER || !DB_PASSWORD) {
+  throw new Error("Database configuration missing");
+}
+
+type UserRequest = Request & {
+  id?: string;
+};
+
+const verifyJWT = (req: UserRequest, res: Response) => {
+  const token = req.get("x-auth-token");
 
   if (!token) {
     res.send("token doesn't exist");
   } else {
-    jwt.verify(token, process.env.JWT_SECRET, (error, decoded) => {
-      if (error) {
+    jwt.verify(token, JWT_SECRET, (error, decoded: any) => {
+      if (error || !decoded) {
         res.json({ auth: false, message: "Failed to authenticate" });
       } else {
         res.json({ auth: true, message: "Authentication Successful" });
@@ -71,9 +85,9 @@ app.post("/login", async (req, res) => {
           (error, response) => {
             if (response) {
               const id = result[0].id;
-              const token = jwt.sign({ id }, process.env.JWT_SECRET);
+              const token = jwt.sign({ id }, JWT_SECRET);
 
-              res.json({ auth: true, token: token, result: result });
+              res.json({ auth: true, token, result });
             } else {
               console.log(error);
               res.json({
@@ -90,9 +104,11 @@ app.post("/login", async (req, res) => {
   );
 });
 
-app.get("/userAuth", verifyJWT, (req, res) => {
-  res.send("You are authenticated.");
-});
+app.get(
+  "/userAuth",
+  (req, res) => verifyJWT(req, res),
+  (req, res) => res.send("You are authenticated.")
+);
 
 app.listen(8000, () => {
   console.log("Server Running");
