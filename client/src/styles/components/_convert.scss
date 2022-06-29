@@ -1,0 +1,144 @@
+.c-convert {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: rgb(47, 73, 209);
+  background: linear-gradient(
+    35deg,
+    rgba(47, 73, 209, 1) 0%,
+    rgba(88, 135, 255, 1) 100%
+  );
+  &__welcome {
+    font-family: $default-font;
+    color: white;
+    margin: 4rem;
+    font-size: 2rem;
+    user-select: none;
+    span {
+      text-transform: uppercase;
+    }
+  }
+  &__card {
+    background-color: white;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+    &__logo {
+      display: flex;
+      align-items: center;
+      margin: 2rem 4rem 2rem 4rem;
+      &__text {
+        font-size: 3rem;
+        text-align: center;
+        font-family: $default-font;
+        color: #012754;
+        margin-left: 2rem;
+        line-height: 3rem;
+      }
+    }
+    .o-logo {
+      width: 8rem;
+    }
+    &__input-fields {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      &__fieldset {
+        font-family: $default-font;
+        width: 20rem;
+        height: 4.5rem;
+        border-radius: 5px;
+        border: 2px solid #1b2531;
+        display: flex;
+        justify-content: space-around;
+        &__divider {
+          width: 1px;
+          height: 27px;
+          background-color: #1b2531;
+        }
+        select {
+          border: none;
+          background-color: white;
+          width: 6rem;
+          outline: 0px;
+          color: #33428e;
+          &:focus {
+            border: none;
+            box-shadow: none;
+          }
+          option {
+            // border: none;
+            color: #33428e;
+          }
+        }
+        input {
+          border: none;
+          outline: 0px;
+          color: #33428e;
+          text-align: right;
+          width: 6rem;
+          &:disabled {
+            background-color: white;
+          }
+        }
+        legend {
+          box-sizing: border-box;
+        }
+      }
+      &__swap-icon {
+        width: 1.5rem;
+        margin: 1rem;
+        margin-top: 2rem;
+        cursor: pointer;
+      }
+      &__loader {
+        width: 3rem;
+        margin: 1rem;
+        margin-top: 2rem;
+      }
+    }
+    &__market-rate {
+      margin: 2rem;
+      span {
+        font-family: $default-font;
+        color: #33428e;
+        font-size: 1.3rem;
+        font-weight: 600;
+      }
+    }
+  }
+  &__sign-out {
+    margin: 1rem;
+    a {
+      font-family: $default-font;
+      text-decoration: none;
+      color: white;
+    }
+  }
+}
+.c-not-logged {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: rgb(47, 73, 209);
+  background: linear-gradient(
+    35deg,
+    rgba(47, 73, 209, 1) 0%,
+    rgba(88, 135, 255, 1) 100%
+  );
+  color: white;
+  font-family: $default-font;
+  font-size: 1.5rem;
+  user-select: none;
+  a {
+    text-decoration: none;
+    color: rgb(0, 0, 168);
+  }
+}
