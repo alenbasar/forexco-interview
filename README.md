@@ -1,5 +1,10 @@
 # forexco-interview
 
+## Stack
+-React.js
+-Node.js
+-Express
+
 ![Screenshot from 2022-06-29 22-22-26](https://user-images.githubusercontent.com/63575553/176435240-e2231cb3-8808-4ae1-9daf-a41318319181.png)
 ![Screenshot from 2022-06-29 22-23-10](https://user-images.githubusercontent.com/63575553/176435324-9cac49bc-2570-4aff-96d6-a823b19bd4d5.png)
 ![Screenshot from 2022-06-29 22-23-45](https://user-images.githubusercontent.com/63575553/176435452-670e72e2-a2bd-4ce5-9e27-74f47ff0538c.png)
