@@ -37,16 +37,17 @@ export default function Login() {
       throw new Error("No token supplied");
     }
     try {
-      await axios
-        .get<CommonHeaderProperties>("http://localhost:8000/userAuth", {
+      const res = await axios.get<CommonHeaderProperties>(
+        "http://localhost:8000/userAuth",
+        {
           headers: {
             "x-auth-token": tokenFromStorage,
           },
-        })
-        .then((res) => {
-          console.log(res);
-          setAuthenticated(true);
-        });
+        }
+      );
+
+      console.log(res);
+      setAuthenticated(true);
     } catch (error) {
       console.log(error);
     }
@@ -58,17 +59,16 @@ export default function Login() {
       password: password,
     };
     try {
-      await axios.post("http://localhost:8000/login", body).then((res) => {
-        console.log("Sign in:", res.data);
-        if (res.data.auth) {
-          localStorage.setItem("token", res.data.token);
+      const { data } = await axios.post("http://localhost:8000/login", body);
+      console.log("Sign in:", data);
+      if (data.auth) {
+        localStorage.setItem("token", data.token);
 
-          userAuth();
-          navigate("/convert", { state: username });
-        } else {
-          setLoginErr(true);
-        }
-      });
+        userAuth();
+        navigate("/convert", { state: username });
+      } else {
+        setLoginErr(true);
+      }
     } catch (error) {
       console.log(error);
     }
