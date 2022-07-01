@@ -80,6 +80,10 @@ export default function Login() {
         <title>{`Log In`}</title>
       </Helmet>
       <section className="c-login">
+        <div className="c-login__welcome">
+          <h1>Welcome back!</h1>
+          <span>Sign in to your account to continue</span>
+        </div>
         <div className="c-login__card">
           <FormGroup>
             <Box
