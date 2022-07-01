@@ -36,7 +36,7 @@ const Convert = () => {
   const [refresh, setRefresh] = useState(false);
   const [loading, setLoading] = useState(true);
   const [showRate, setShowRate] = useState(false);
-  const [selection, setSelection] = useState<Conversion>({
+  const [convertData, setConvertData] = useState<Conversion>({
     symbols: [],
     from: "AUD",
     amount: 1,
@@ -44,7 +44,7 @@ const Convert = () => {
     result: "",
     rate: null,
   });
-  const { symbols, from, amount, to, result, rate } = selection;
+  const { symbols, from, amount, to, result, rate } = convertData;
 
   useEffect(() => {
     setLoading(true);
@@ -60,8 +60,8 @@ const Convert = () => {
           const rate = data.info.rate.toPrecision();
           const result = data.result.toFixed(3);
 
-          setSelection({
-            ...selection,
+          setConvertData({
+            ...convertData,
             result: result,
             rate,
           });
@@ -86,8 +86,8 @@ const Convert = () => {
             for (let key in rawSymbols) {
               symbols.push(key);
             }
-            setSelection({
-              ...selection,
+            setConvertData({
+              ...convertData,
               symbols,
             });
           } else {
@@ -112,25 +112,25 @@ const Convert = () => {
   };
 
   const handleInput = (e: any) => {
-    setSelection({
-      ...selection,
+    setConvertData({
+      ...convertData,
       amount: e.target.value,
     });
   };
 
   const handleSelection = (e: any) => {
-    setSelection({
-      ...selection,
+    setConvertData({
+      ...convertData,
       [e.target.name]: e.target.value,
     });
   };
 
   const handleSwap = () => {
-    let from = selection.from;
-    let to = selection.to;
+    let from = convertData.from;
+    let to = convertData.to;
 
-    setSelection({
-      ...selection,
+    setConvertData({
+      ...convertData,
       from: to,
       to: from,
     });
